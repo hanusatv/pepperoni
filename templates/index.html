@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casa Del Pissboi</title>
-</head>
-<body>
-    <iframe src="https://open.spotify.com/embed/track/6L8QORdT7WAH8k0drdO7on?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-    <audio controls autoplay>
-        <source src="burrapp.mp3" type="audio/mpeg">
-      </audio>
-      <picture>
-        <img src="magnusgerda.JPG" style="width:auto;">
-      </picture>
-      <br>  
-    <a href="/weight">Weight</a>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+<audio controls autoplay>
+    <source src="burrapp.mp3" type="audio/mpeg">
+  </audio>
+  <picture>
+    <img src="magnusgerda.JPG" style="width:auto;">
+  </picture>
+  <br>  
+<a href="/weight">Weight</a>
+{% endblock %}
