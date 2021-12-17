@@ -11,7 +11,7 @@ def weight_register():
         weight = request.form['Weight']
         user = request.form['User']
         wf.weightinsert(date, weight, user)
-        return redirect(url_for('weight_form'))
+        return redirect(url_for('index'))
 
 @app.route('/weight', methods=['GET'])
 def weight_form():
