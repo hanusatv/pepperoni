@@ -3,6 +3,7 @@
   position: relative;
   display: flex;
   font-size: 35px;
+  box-shadow: 2px 2px 4px 4px #c4ce3d;
 }
 
 .navigation-element{
@@ -20,6 +21,8 @@
 body{
   margin: 0px;
   font-family: Helvetica, sans-serif;
+  color: black;
+  background-color: #fffcdb;
 }
 
 li{  
@@ -31,4 +34,34 @@ li{
 a{
   text-decoration: none;
   color: black;
+}
+
+.form{
+  padding: 20px;
+}
+
+.form-element{
+  padding: 10px;
+}
+
+.form-element [type=date],[type=number],[type=submit], select {
+  width: 100%;
+  max-width: 400px;
+  height: 40px;
+  padding-left: 15px;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  color: white;
+  background-color: #4CAF50;
+  border: none;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
 }
