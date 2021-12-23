@@ -1,6 +1,7 @@
 import csv
 
 from wtforms.fields.choices import SelectField
+from wtforms.fields.simple import SubmitField
 import weightfunctions as wf
 from flask import Flask, render_template, request, redirect, url_for
 from flask_wtf import FlaskForm
@@ -18,6 +19,7 @@ class WeightForm(FlaskForm):
     date = DateField('Date')
     weight = DecimalField('Weigh')
     user = SelectField('Pissboi no.', choices=[('Hanus','1 Hanus'), ('Magnus', '2 Magnus')])
+    submit = SubmitField('Submit')
 
 ##
 #Endpoints
