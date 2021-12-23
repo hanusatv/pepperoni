@@ -25,7 +25,7 @@ body{
   background-color: #fffcdb;
 }
 
-li{  
+.navigation-bar li{  
   display: inherit;
   margin-left: 20px;
   margin-right: 20px;
@@ -38,27 +38,34 @@ a{
 
 .form{
   padding: 20px;
+  display: block;
 }
 
-.form-element{
-  padding: 10px;
-}
-
-.form-element [type=date],[type=number],[type=submit], select {
+.form [type=date],.form [type=number],.form select {
   width: 100%;
   max-width: 400px;
   height: 40px;
-  padding-left: 15px;
   display: block;
+  padding-left: 15px;
+  margin: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
-input[type=submit] {
+.form label{
+  margin-left: 10px;
+}
+
+.form input[type=submit] {
+  width: 100%;
+  max-width: 400px;
+  height: 40px;
+  margin: 10px;
   color: white;
   background-color: #4CAF50;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
 }
 

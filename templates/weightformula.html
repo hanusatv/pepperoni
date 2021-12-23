@@ -1,28 +1,15 @@
 {% extends "base.html" %}
-{% block title %}Index{% endblock %}
 {% block content %}
-<div class="form">
-    <form class="form" action="/weight/register" method="post">
-        <li class="form-element">
-            <label for="weightdate">Date:</label>
-            <input class="form-input" type="date" name="Date" id="weightdate">
-        </li>
-        <li class="form-element">
-            <label for="Weight">Weight:</label>
-            <input class="form-input" type="number" name="Weight" id="weightnumber">
-        </li>
-        <li class="form-element">
-            <label for="weightuser">User:</label>
-            <select class="form-input" name="User" id="weightuser">
-                <option value="Hanus">Hanus</option>
-                <option value="Magnus">Magnus</option>
-            </select>
-        </li>
-        <li class="form-element">
-            <input class="form-input" type="submit" value="Submit">
-        </li>
-
-
-    </form>
-</div>
+<form class="form" action="/weight/register" method="post">
+    <div class='form'>
+        {{ form.csrf_token }}
+        {{ form.date.label }}
+        {{ form.date }}
+        {{ form.weight.label }}
+        {{ form.weight }}
+        {{ form.user.label }}
+        {{ form.user }}
+        {{ form.submit}}
+    </div>
+</form>
 {% endblock %}

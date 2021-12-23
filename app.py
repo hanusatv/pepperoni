@@ -1,5 +1,4 @@
 import csv
-
 from wtforms.fields.choices import SelectField
 from wtforms.fields.simple import SubmitField
 import weightfunctions as wf
@@ -18,7 +17,7 @@ app.config['SECRET_KEY'] = 'CasaDelPiss'
 class WeightForm(FlaskForm):
     date = DateField('Date')
     weight = DecimalField('Weigh')
-    user = SelectField('Pissboi no.', choices=[('Hanus','1 Hanus'), ('Magnus', '2 Magnus')])
+    user = SelectField('Pissboi no.', choices=[('',''),('Hanus','1 Hanus'), ('Magnus', '2 Magnus')])
     submit = SubmitField('Submit')
 
 ##
@@ -35,7 +34,7 @@ def weight_register():
 
 @app.route('/weight', methods=['GET'])
 def weight_form():
-    return render_template('weightformula.html')
+    return render_template('weightformula.html', form = WeightForm())
 
 @app.route('/', methods =['GET'])
 def index():
@@ -59,3 +58,7 @@ def initialize_file():
 if __name__ == "__main__":
     initialize_file()
     serve(app, host="localhost", port="6969")
+
+""" if __name__ == "__main__":
+    initialize_file()
+    app.run(debug=True) """
