@@ -1,10 +1,12 @@
 import csv
+from types import MethodType
 from wtforms.fields.choices import SelectField
 from wtforms.fields.simple import SubmitField
 import weightfunctions as wf
 from flask import Flask, render_template, request, redirect, url_for
-from flask_wtf import FlaskForm
+from flask_wtf import FlaskForm, Form
 from wtforms import DateField, DecimalField
+from wtforms.validators import InputRequired, NumberRange
 from waitress import serve
 
 app = Flask(__name__)
@@ -15,9 +17,9 @@ app.config['SECRET_KEY'] = 'CasaDelPiss'
 ##
 
 class WeightForm(FlaskForm):
-    date = DateField('Date')
-    weight = DecimalField('Weigh')
-    user = SelectField('Pissboi no.', choices=[('',''),('Hanus','1 Hanus'), ('Magnus', '2 Magnus')])
+    date = DateField('Date', [InputRequired()])
+    weight = DecimalField('Weigh', [InputRequired(), NumberRange(min=1, max=100)])
+    user = SelectField('Pissboi no.', [InputRequired()], choices=[('',''),('Hanus','1 Hanus'), ('Magnus', '2 Magnus')])
     submit = SubmitField('Submit')
 
 ##
@@ -26,15 +28,18 @@ class WeightForm(FlaskForm):
 
 @app.route('/weight/register', methods=['POST'])
 def weight_register():
-        date = request.form['Date']
-        weight = request.form['Weight']
-        user = request.form['User']
+    form = WeightForm()
+    if form.validate_on_submit:
+        date = request.form['date']
+        weight = request.form['weight']
+        user = request.form['user']
         wf.weightinsert(date, weight, user)
-        return redirect(url_for('index'))
+        return redirect(url_for('weight_form'))
 
 @app.route('/weight', methods=['GET'])
 def weight_form():
-    return render_template('weightformula.html', form = WeightForm())
+    form = WeightForm()
+    return render_template('weightformula.html', form = form)
 
 @app.route('/', methods =['GET'])
 def index():
@@ -42,7 +47,6 @@ def index():
 
 @app.route('/test', methods=['GET'])
 def test():
-    form = WeightForm()
     return render_template('test.html', form = WeightForm())
 
 
