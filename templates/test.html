@@ -1,3 +1,14 @@
 {% extends "base.html" %}
+{% block header %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+{% endblock %}
 {% block content %}
+<!-- <div class="chart">
+    <canvas id="myChart"></canvas>
+        <script src="{{ url_for('static', filename='js/javascript.js')}}"></script>
+</div> -->
+<div class="chart">
+    <canvas id="weightChart"></canvas>
+        <script src="{{ url_for('static', filename='js/weightChart.js')}}"></script>
+</div>
 {% endblock %}

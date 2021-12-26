@@ -72,3 +72,8 @@ a{
 input[type=submit]:hover {
   background-color: #45a049;
 }
+
+.columns{
+  display: flex;
+  flex-direction: row;
+}

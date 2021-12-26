@@ -1,15 +1,49 @@
 {% extends "base.html" %}
+{% block header %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
 {% block content %}
-<form class="form" action="{{ url_for('weight_register') }}"  method="post">
-    <div class='form'>
-        {{ form.csrf_token }}
-        {{ form.date.label }}
-        {{ form.date }}
-        {{ form.weight.label }}
-        {{ form.weight }}
-        {{ form.user.label }}
-        {{ form.user }}
-        {{ form.submit}}
+<div class = columns>
+    <div class = column1>
+        <form class="form" action="{{ url_for('weight_register') }}"  method="post">
+            <div class='form'>
+                {{ form.csrf_token }}
+                {{ form.date.label }}
+                {{ form.date }}
+                {{ form.weight.label }}
+                {{ form.weight }}
+                {{ form.user.label }}
+                {{ form.user }}
+                {{ form.submit }}
+                {{ form.date2 }}
+            </div>
+        </form>
     </div>
-</form>
+    <div class = column2>
+        <div class="chart">
+            <canvas id="myChart"></canvas>
+        
+            <script>
+                let myChart = document.getElementById('myChart').getContext('2d');
+        
+                let weightChart = new Chart(myChart, {
+                    type:'line',
+                    labels:['Magnus','Hanus','Bjartur'],
+                    data:{
+                        labels:['Hanus','Magnus'],
+                        datasets:[{
+                            label:'Hanus',
+                            data:['100','50']
+                            },{
+                            label:'Magnus',
+                            data:['50','100']
+                            }
+                        ]
+                    },
+                    options:{}
+                });
+            </script>
+        </div>
+    </div>
+</div>
 {% endblock %}

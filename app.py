@@ -1,10 +1,11 @@
 import csv
-from types import MethodType
+from datetime import date
+from typing import DefaultDict
 from wtforms.fields.choices import SelectField
 from wtforms.fields.simple import SubmitField
 import weightfunctions as wf
 from flask import Flask, render_template, request, redirect, url_for
-from flask_wtf import FlaskForm, Form
+from flask_wtf import FlaskForm
 from wtforms import DateField, DecimalField
 from wtforms.validators import InputRequired, NumberRange
 from waitress import serve
@@ -17,9 +18,25 @@ app.config['SECRET_KEY'] = 'CasaDelPiss'
 ##
 
 class WeightForm(FlaskForm):
-    date = DateField('Date', [InputRequired()])
-    weight = DecimalField('Weigh', [InputRequired(), NumberRange(min=1, max=100)])
-    user = SelectField('Pissboi no.', [InputRequired()], choices=[('',''),('Hanus','1 Hanus'), ('Magnus', '2 Magnus')])
+    date = DateField(
+        'Date',
+        [InputRequired()],
+        format="%Y-%m-%d",
+        default = date.today)
+
+    weight = DecimalField(
+        'Weigh', 
+        [InputRequired(), 
+        NumberRange(min=1, max=100)])
+    
+    user = SelectField(
+        'Pissboi no.', 
+        [InputRequired()],
+         choices=[
+             ('',''),
+             ('Hanus','1 Hanus'), 
+             ('Magnus', '2 Magnus')])
+    
     submit = SubmitField('Submit')
 
 ##
@@ -49,7 +66,6 @@ def index():
 def test():
     return render_template('test.html', form = WeightForm())
 
-
 ##
 #Functions
 ##
@@ -60,7 +76,7 @@ def initialize_file():
         csv_writer.writerow(["date","weight","user"])
 
 if __name__ == "__main__":
-    initialize_file()
+#    initialize_file()
     serve(app, host="localhost", port="6969")
 
 """ if __name__ == "__main__":
