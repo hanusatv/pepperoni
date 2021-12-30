@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% block header %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 {% endblock %}
 {% block content %}
 <div class = columns>
-    <div class = column1>
+    <div class = "column1 column">
         <form class="form" action="{{ url_for('weight_register') }}"  method="post">
             <div class='form'>
                 {{ form.csrf_token }}
@@ -19,30 +20,9 @@
             </div>
         </form>
     </div>
-    <div class = column2>
+    <div class = "column2 column">
         <div class="chart">
-            <canvas id="myChart"></canvas>
-        
-            <script>
-                let myChart = document.getElementById('myChart').getContext('2d');
-        
-                let weightChart = new Chart(myChart, {
-                    type:'line',
-                    labels:['Magnus','Hanus','Bjartur'],
-                    data:{
-                        labels:['Hanus','Magnus'],
-                        datasets:[{
-                            label:'Hanus',
-                            data:['100','50']
-                            },{
-                            label:'Magnus',
-                            data:['50','100']
-                            }
-                        ]
-                    },
-                    options:{}
-                });
-            </script>
+            {% include "weightchart.html" %}
         </div>
     </div>
 </div>

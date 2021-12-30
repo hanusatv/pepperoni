@@ -18,17 +18,17 @@
   padding: 0px;
 }
 
+.navigation-bar li{  
+  display: inherit;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 body{
   margin: 0px;
   font-family: Helvetica, sans-serif;
   color: black;
   background-color: #fffcdb;
-}
-
-.navigation-bar li{  
-  display: inherit;
-  margin-left: 20px;
-  margin-right: 20px;
 }
 
 a{
@@ -37,7 +37,6 @@ a{
 }
 
 .form{
-  padding: 20px;
   display: block;
 }
 
@@ -76,4 +75,13 @@ input[type=submit]:hover {
 .columns{
   display: flex;
   flex-direction: row;
+  margin: 20px;
+}
+
+.column{
+  margin: auto;
+}
+
+.chart {
+  width: 1000px;
 }

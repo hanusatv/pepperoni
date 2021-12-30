@@ -4,7 +4,7 @@ from typing import DefaultDict
 from wtforms.fields.choices import SelectField
 from wtforms.fields.simple import SubmitField
 import weightfunctions as wf
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_wtf import FlaskForm
 from wtforms import DateField, DecimalField
 from wtforms.validators import InputRequired, NumberRange
@@ -64,7 +64,8 @@ def index():
 
 @app.route('/test', methods=['GET'])
 def test():
-    return render_template('test.html', form = WeightForm())
+    data = wf.weightget()
+    return jsonify(data)
 
 ##
 #Functions
