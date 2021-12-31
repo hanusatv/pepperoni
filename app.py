@@ -1,6 +1,5 @@
 import csv
 from datetime import date
-from typing import DefaultDict
 from wtforms.fields.choices import SelectField
 from wtforms.fields.simple import SubmitField
 import weightfunctions as wf
@@ -42,6 +41,10 @@ class WeightForm(FlaskForm):
 ##
 #Endpoints
 ##
+@app.route('/weight', methods=['GET'])
+def weight_form():
+    form = WeightForm()
+    return render_template('weightformula.html', form = form)
 
 @app.route('/weight/register', methods=['POST'])
 def weight_register():
@@ -53,10 +56,10 @@ def weight_register():
         wf.weightinsert(date, weight, user)
         return redirect(url_for('weight_form'))
 
-@app.route('/weight', methods=['GET'])
-def weight_form():
-    form = WeightForm()
-    return render_template('weightformula.html', form = form)
+@app.route('/weight/get', methods=['GET'])
+def weight_get():
+    data = wf.weightget()
+    return jsonify(data)
 
 @app.route('/', methods =['GET'])
 def index():
@@ -66,7 +69,6 @@ def index():
 def test():
     data = wf.weightget()
     return jsonify(data)
-
 ##
 #Functions
 ##

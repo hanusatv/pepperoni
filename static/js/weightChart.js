@@ -1,28 +1,20 @@
-//open file
-// for I = rowlength do begin
-// Dato[i] = row(datevalue)
-// Weight[i] = row(weightvalue)
-// const data = {
- //FOR I = 1 do begin
-//   datasets: [{
-//     label: 'Hanus',
-//     data: [{
-//       x: Dato[i],
-//       y: Weight[i]
-//     }, {
-  //Until dato.Next = 0 or Weight.Next = 0:
-//end
+const api_url = '/weight/get';
 
-const testarray = ['2021-01-01','2021-12-15'];
+async function getWeight() {
+  const response = await fetch(api_url);
+  const responseData = await response.json();
+  console.log(responseData);
+}
+getWeight();
 
 const data = {
   datasets: [{
     label: 'Hanus',
     data: [{
-      x: testarray[0],
+      x: '2021-12-20',
       y: 80
     }, {
-      x: testarray[1],
+      x: '2021-12-21',
       y: 85
     }, {
       x: '2021-12-22',
@@ -34,7 +26,7 @@ const data = {
   },{
     label: 'Mangus',
     data:[{
-      x: '2021-12-01',
+      x: '2022-12-01',
       y: 100
     }, {
       x: '2021-12-15',
