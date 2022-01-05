@@ -26,7 +26,7 @@ class WeightForm(FlaskForm):
     weight = DecimalField(
         'Weigh', 
         [InputRequired(), 
-        NumberRange(min=1, max=100)])
+        NumberRange(min=1, max=150)])
     
     user = SelectField(
         'Pissboi no.', 
@@ -41,6 +41,7 @@ class WeightForm(FlaskForm):
 ##
 #Endpoints
 ##
+
 @app.route('/weight', methods=['GET'])
 def weight_form():
     form = WeightForm()
@@ -67,8 +68,7 @@ def index():
 
 @app.route('/test', methods=['GET'])
 def test():
-    data = wf.weightget()
-    return jsonify(data)
+    return render_template('test.html')
 ##
 #Functions
 ##

@@ -22,56 +22,40 @@ const graphOptions = {
         text: 'kg'
       }
     }
-  },
-  plugins: {
-    colorschemes: {
-      scheme: 'brewer.RdYlGn6'
-
-    }
   }
 }
 const graphStyling = {
 
 }
-const graphLineColors = [
-  "#fca44c",
-  "#ff4d4d",
-  "#91531a",
-  "#9b50a7",
-  "#c1c3d7",
-  "#4c3a27"
-]
+
 async function getWeight() {
   const response = await fetch(api_url)
   const responseData = await response.json()
   return responseData
 }
 
-function buildChartData() {
-  getWeight().then(data => {
-    let userdata = {}
+async function buildChartData() {
+  getWeight().then(responseData => {
+    let data = responseData
+    let userdata = {};
 
     data.sort((a, b) => a.date < b.date ? -1 : 1).forEach((d) => {
-      let user = userdata[d.user]
+      let user = userdata[d.user];
       if (user) {
         user.push({ x: d.date, y: d.weight });
-        userdata[d.user] = user
+        userdata[d.user] = user;
       } else {
         userdata[d.user] = [{ x: d.date, y: d.weight }]
       }
     });
 
-    let datasets = []
+    let datasets = [];
 
-    let i = 0
     for (const [user, data] of Object.entries(userdata)) {
       datasets.push({
         label: user,
-        data: data,
-        backgroundColor: graphLineColors[i],
-        borderColor: graphLineColors[i]
+        data: data
       })
-      i = i + 1
     }
 
     let chart = {
@@ -89,3 +73,34 @@ function buildChartData() {
 }
 
 buildChartData()
+
+
+
+
+/* 
+{datasets:[
+  {
+    label: "Hanus",
+    data:[
+      {
+      x: date,
+      y: weight
+      },{
+      x: date,
+      y: weight
+      }
+    ]
+  },{
+    label: "Magnus",
+    data:[
+      {
+      x: date,
+      y: weight
+      },{
+      x: date,
+      y: weight
+      }
+    ]
+  }
+]} 
+*/
