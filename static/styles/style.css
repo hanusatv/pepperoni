@@ -38,6 +38,7 @@ a{
 
 .form{
   display: block;
+  width: 100%;
 }
 
 .form [type=date],.form [type=number],.form select {
@@ -72,16 +73,20 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
-.columns{
-  display: flex;
-  flex-direction: row;
-  margin: 20px;
-}
-
-.column{
-  margin: auto;
-}
-
 .chart {
-  width: 1000px;
+  width: 80%;
+}
+
+.grid-container{
+  display: grid;
+  margin-top: 20px;
+  margin-left: 50px;
+  grid-template-columns: [column1] 1fr [column2] 5fr;
+  align-items: center;
+  justify-items: stretch;
+  column-gap: 100px;
+}
+
+grid-elemet chart (2n) {
+  border: 2px dashed red;
 }

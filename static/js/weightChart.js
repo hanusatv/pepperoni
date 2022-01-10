@@ -1,5 +1,6 @@
-const api_url = '/weight/get'
-const graphOptions = {
+const weight_api_url = '/weight/get'
+
+const weight_graphOptions = {
   title: {
     text: 'Weight',
     display: true
@@ -42,7 +43,7 @@ const graphLineColors = [
   "#4c3a27"
 ]
 async function getWeight() {
-  const response = await fetch(api_url)
+  const response = await fetch(weight_api_url)
   const responseData = await response.json()
   return responseData
 }
@@ -82,7 +83,7 @@ function buildChartData() {
     const chartConfig = {
       type: 'line',
       data: chart,
-      options: graphOptions
+      options: weight_graphOptions
     }
     const weightChart = new Chart(document.getElementById('weightChart'), chartConfig)
   })

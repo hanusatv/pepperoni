@@ -7,26 +7,38 @@
     src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 {% endblock %}
 {% block content %}
-<div class=columns>
-    <div class="column1 column">
-        <form class="form" action="{{ url_for('weight_register') }}" method="post">
-            <div class='form'>
-                {{ form.csrf_token }}
-                {{ form.date.label }}
-                {{ form.date }}
-                {{ form.weight.label }}
-                {{ form.weight }}
-                {{ form.user.label }}
-                {{ form.user }}
-                {{ form.submit }}
-                {{ form.date2 }}
-            </div>
-        </form>
-    </div>
-    <div class="column2 column">
-        <div class="chart">
-            {% include "weightchart.html" %}
+<div class="grid-container">
+    <form class="grid-elemet" action="{{ url_for('weight_register') }}" method="post">
+        <div class='form'>
+            {{ weight.date.label }}
+            {{ weight.date }}
+            {{ weight.weight.label }}
+            {{ weight.weight }}
+            {{ weight.user.label }}
+            {{ weight.user }}
+            {{ weight.submit }}
         </div>
+    </form>
+    <div class="grid-elemet chart">
+        <canvas id="weightChart"></canvas>
+        <script src="{{ url_for('static', filename='js/weightChart.js')}}"></script>
+    </div>
+    <form class="grid-elemet" action="{{ url_for('lift_register') }}" method="post">
+        <div class='form'>
+            {{ lift.date.label }}
+            {{ lift.date }}
+            {{ lift.exercise.label }}
+            {{ lift.exercise }}
+            {{ lift.weight.label }}
+            {{ lift.weight }}
+            {{ lift.user.label }}
+            {{ lift.user }}
+            {{ lift.submit }}
+        </div>
+    </form>
+    <div class="grid-elemet chart">
+        <canvas id="liftChart"></canvas>
+        <script src="{{ url_for('static', filename='js/liftChart.js')}}"></script>
     </div>
 </div>
 {% endblock %}
