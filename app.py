@@ -152,9 +152,5 @@ def initialize_files():
 
 
 if __name__ == "__main__":
-    initialize_files()
+    #    initialize_files()
     serve(app, host="localhost", port="6969")
-
-""" if __name__ == "__main__":
-    initialize_files()
-    app.run(debug=True) """
