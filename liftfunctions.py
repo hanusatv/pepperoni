@@ -1,8 +1,6 @@
 import csv
 import os
 
-from weightfunctions import DATA_DIR
-
 DATA_DIR = "data"
 
 
