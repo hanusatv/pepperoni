@@ -79,7 +79,6 @@ function buildChartData() {
       datasets: datasets
     }
 
-    console.log(chart)
     const chartConfig = {
       type: 'line',
       data: chart,

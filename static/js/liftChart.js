@@ -1,6 +1,6 @@
 const lift_api_url = '/lift/get'
 
-const graphOptions = {
+const lift_graphOptions = {
     title: {
         text: 'Lift',
         display: true
@@ -40,22 +40,23 @@ async function getLift() {
 
 function buildChartData() {
     getLift().then(data => {
-        let userdata = {}
+        let liftdata = {}
 
         data.sort((a, b) => a.date < b.date ? -1 : 1).forEach((d) => {
-            let user = userdata[d.user]
-            if (user) {
-                user.push({ x: d.date, y: d.weight });
-                userdata[d.user] = user
+            let userExercise = liftdata[d.user, d.exercise]
+            if (userExercise) {
+                userExercise.push({ x: d.date, y: d.weight });
+                liftdata[d.user] = userExercise
             } else {
-                userdata[d.user] = [{ x: d.date, y: d.weight }]
+                liftdata[d.user, d.exercise] = [{ x: d.date, y: d.weight }]
             }
+            console.log(liftdata)
         });
 
         let datasets = []
 
         let i = 0
-        for (const [user, data] of Object.entries(userdata)) {
+        for (const [user, data] of Object.entries(liftdata)) {
             datasets.push({
                 label: user,
                 data: data,
@@ -73,7 +74,7 @@ function buildChartData() {
         const chartConfig = {
             type: 'line',
             data: chart,
-            options: graphOptions
+            options: lift_graphOptions
         }
         const liftChart = new Chart(document.getElementById('liftChart'), chartConfig)
     })
