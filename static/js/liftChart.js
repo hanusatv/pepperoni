@@ -24,12 +24,6 @@ const lift_graphOptions = {
             }
         }
     },
-    plugins: {
-        colorschemes: {
-            scheme: 'brewer.RdYlGn6'
-
-        }
-    }
 }
 
 async function getLift() {
@@ -40,32 +34,30 @@ async function getLift() {
 
 function buildChartData() {
     getLift().then(data => {
-        let liftdata = {}
+        let userData = {};
 
-        data.sort((a, b) => a.date < b.date ? -1 : 1).forEach((d) => {
-            let userExercise = liftdata[d.user, d.exercise]
-            if (userExercise) {
-                userExercise.push({ x: d.date, y: d.weight });
-                liftdata[d.user] = userExercise
+        data.forEach(d => {
+            let label = `${d.user} ${d.exercise}`;
+            let currentData = userData[label];
+            if (currentData) {
+                currentData.push({ x: d.date, y: d.weight });
+                userData[label] = currentData;
             } else {
-                liftdata[d.user, d.exercise] = [{ x: d.date, y: d.weight }]
+                userData[label] = [{ x: d.date, y: d.weight }];
             }
-            console.log(liftdata)
-        });
+        })
 
-        let datasets = []
 
-        let i = 0
-        for (const [user, data] of Object.entries(liftdata)) {
+        let datasets = [];
+
+        Object.entries(userData).forEach(([label, data], i) => {
             datasets.push({
-                label: user,
+                label: label,
                 data: data,
                 backgroundColor: graphLineColors[i],
                 borderColor: graphLineColors[i]
             })
-            i = i + 1
-        }
-
+        })
         let chart = {
             datasets: datasets
         }

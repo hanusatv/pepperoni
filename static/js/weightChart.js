@@ -64,16 +64,14 @@ function buildChartData() {
 
     let datasets = []
 
-    let i = 0
-    for (const [user, data] of Object.entries(userdata)) {
+    Object.entries(userdata).forEach(([user, data], i) => {
       datasets.push({
         label: user,
         data: data,
         backgroundColor: graphLineColors[i],
         borderColor: graphLineColors[i]
       })
-      i = i + 1
-    }
+    })
 
     let chart = {
       datasets: datasets
