@@ -3,14 +3,14 @@ import re
 import random
 
 # Ger ein lista við øllum valid guesses
-file = open("static/data/validGuesses.json", encoding="utf-8")
+file = open("static/database/validGuesses.json", encoding="utf-8")
 validGuesses = json.load(file)
 file.close()
 a = (map(lambda x: x.lower(), validGuesses))
 validGuesses = list(a)
 
 # Ger ein lista við øllum valid wordl
-file = open("static/data/wordlist.json", encoding="utf-8")
+file = open("static/database/wordlist.json", encoding="utf-8")
 wordlist = json.load(file)
 file.close()
 a = (map(lambda x: x.lower(), wordlist))
@@ -137,7 +137,7 @@ def playWordle():
 
 
 def setAnswer():
-    file = open("static/data/wordlist.json", encoding="utf-8")
+    file = open("static/database/wordlist.json", encoding="utf-8")
     wordlist = json.load(file)
     file.close()
     a = (map(lambda x: x.lower(), wordlist))
