@@ -6,18 +6,20 @@ import os
 DB_DIR = "static/database"
 
 # Ger ein lista við øllum valid guesses
-file = open("static/database/validGuesses.json", encoding="utf-8")
-validGuesses = json.load(file)
-file.close()
-a = (map(lambda x: x.lower(), validGuesses))
-validGuesses = list(a)
+with open(os.path.join(DB_DIR, "validGuesses.json"), "r", encoding="utf-8") as file:
+    #file = open("static/database/validGuesses.json", encoding="utf-8")
+    validGuesses = json.load(file)
+    # file.close()
+    a = (map(lambda x: x.lower(), validGuesses))
+    validGuesses = list(a)
 
 # Ger ein lista við øllum valid wordl
-file = open("static/database/wordlist.json", encoding="utf-8")
-wordlist = json.load(file)
-file.close()
-a = (map(lambda x: x.lower(), wordlist))
-wordlist = list(a)
+with open(os.path.join(DB_DIR, "wordlist.json"), "r", encoding="utf-8") as file:
+    #file = open("static/database/wordlist.json", encoding="utf-8")
+    wordlist = json.load(file)
+    # file.close()
+    a = (map(lambda x: x.lower(), wordlist))
+    wordlist = list(a)
 
 
 def colorCodeLettersInGuess(answer, guess):
