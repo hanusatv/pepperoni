@@ -1,16 +1,19 @@
 import json
 import re
 import random
+import os
+
+DB_DIR = "static/database"
 
 # Ger ein lista við øllum valid guesses
-file = open("static/database/validGuesses.json", encoding="utf-8")
+file = open(os.path.join(DB_DIR, "validGuesses.json"), encoding="utf-8")
 validGuesses = json.load(file)
 file.close()
 a = (map(lambda x: x.lower(), validGuesses))
 validGuesses = list(a)
 
 # Ger ein lista við øllum valid wordl
-file = open("static/database/wordlist.json", encoding="utf-8")
+file = open(os.path.join(DB_DIR, "wordlist.json"), encoding="utf-8")
 wordlist = json.load(file)
 file.close()
 a = (map(lambda x: x.lower(), wordlist))

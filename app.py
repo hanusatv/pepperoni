@@ -137,12 +137,6 @@ def test():
     return render_template('test.html')
 
 
-@app.route('/wordle/guess')
-def evaluate_guess():
-    respones = wdf.colorCodeLettersInGuess('hanus', 'stiga')
-    return jsonify(respones)
-
-
 @app.route('/wordle/getanswer', methods=['GET'])
 def get_wordle_answer():
     answer = wdf.setAnswer()
@@ -152,7 +146,7 @@ def get_wordle_answer():
 @app.route('/wordle/submitguess', methods=['POST'])
 def submit_guess():
     submitted_guess = request.json
-    colored_guess = wdf.colorCodeLettersInGuess('magnus', submitted_guess)
+    colored_guess = wdf.colorCodeLettersInGuess('hanus', submitted_guess)
     return jsonify(colored_guess)
 ##
 # Functions
