@@ -6,7 +6,7 @@ import os
 DB_DIR = "static/database"
 
 # Ger ein lista við øllum valid guesses
-with open(os.path.join(DB_DIR, "validGuesses.json"), "r", encoding="utf-8") as file:
+with open(os.path.join(DB_DIR, "validguesses.json"), "r", encoding="utf-8") as file:
     #file = open("static/database/validGuesses.json", encoding="utf-8")
     validGuesses = json.load(file)
     # file.close()
