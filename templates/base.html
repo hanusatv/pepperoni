@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css')}}">
   <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casa Del Pissboi</title>
-    {% block header %}
-    {% endblock %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Del Pissboi</title>
+  {% block header %}
+  {% endblock %}
 </head>
+
 <body>
   <div class="navigation-bar">
     <header>
-        <nav>
-          <ul class="navigation-element">
-            <li>
-              <a href="/">
-                <img class="logo" href="/" src="{{ url_for('static', filename='images/logo.png')}}">
-              </a>
-            </li>
-            <li>
-              <a href="/weight">Weight</a>
-            </li>
-            <li>
-              <audio controls>
-                <source src="{{ url_for('static', filename='audio/burrapp.mp3')}}" type="audio/mpeg">
-              </audio>
-            </li>
-            <li>
-              <a href="/test">Test</a>
-            </li>
-          </ul>
-        </nav>
+      <nav>
+        <ul class="navigation-element">
+          <li>
+            <a href="/">
+              <img class="logo" href="/" src="{{ url_for('static', filename='images/logo.png')}}">
+            </a>
+          </li>
+          <li>
+            <a href="/weight">Weight</a>
+          </li>
+          <li>
+            <audio controls>
+              <source src="{{ url_for('static', filename='audio/burrapp.mp3')}}" type="audio/mpeg">
+            </audio>
+          </li>
+          <li>
+            <a href="/test">Test</a>
+          </li>
+        </ul>
+      </nav>
     </header>
   </div>
   <div id="content">{% block content %}{% endblock %}</div>
 </body>
+
 </html>

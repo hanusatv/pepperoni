@@ -1,14 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>
-  <center>
-    Vælkomin til Casa del Pissboi!
-  </center>
+<h2 class="center">
+  Vælkomin til Casa del Pissboi!
 </h2>
-  <picture>
-    <center>
-      <img src="{{ url_for('static', filename='images/magnusgerda.JPG')}}" style="width:auto;">
-    </center>
+<picture class="center">
+  <img src="{{ url_for('static', filename='images/magnusgerda.JPG')}}" style="width:auto;">
 </picture>
-  <br>
+<br>
 {% endblock %}

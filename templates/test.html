@@ -1,44 +1,42 @@
 {% extends "base.html" %}
-{% block header %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"
-    integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script
-    src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
-{% endblock %}
 {% block content %}
-<div class="grid-container">
-    <form class="grid-elemet" action="{{ url_for('weight_register') }}" method="post">
-        <div class='form'>
-            {{ weight.date.label }}
-            {{ weight.date }}
-            {{ weight.weight.label }}
-            {{ weight.weight }}
-            {{ weight.user.label }}
-            {{ weight.user }}
-            {{ weight.submit }}
+<div class="wordle-frame">
+    <div class='form'>
+        <div class="wordle-grid-container">
+            <input class="wordle-letter row-1" type="text" maxlength="1" id="1" readonly>
+            <input class="wordle-letter row-1" type="text" maxlength="1" id="2" readonly>
+            <input class="wordle-letter row-1" type="text" maxlength="1" id="3" readonly>
+            <input class="wordle-letter row-1" type="text" maxlength="1" id="4" readonly>
+            <input class="wordle-letter row-1" type="text" maxlength="1" id="5" readonly>
+            <input class="wordle-letter row-2" type="text" maxlength="1" id="1" readonly>
+            <input class="wordle-letter row-2" type="text" maxlength="1" id="2" readonly>
+            <input class="wordle-letter row-2" type="text" maxlength="1" id="3" readonly>
+            <input class="wordle-letter row-2" type="text" maxlength="1" id="4" readonly>
+            <input class="wordle-letter row-2" type="text" maxlength="1" id="5" readonly>
+            <input class="wordle-letter row-3" type="text" maxlength="1" id="1" readonly>
+            <input class="wordle-letter row-3" type="text" maxlength="1" id="2" readonly>
+            <input class="wordle-letter row-3" type="text" maxlength="1" id="3" readonly>
+            <input class="wordle-letter row-3" type="text" maxlength="1" id="4" readonly>
+            <input class="wordle-letter row-3" type="text" maxlength="1" id="5" readonly>
+            <input class="wordle-letter row-4" type="text" maxlength="1" id="1" readonly>
+            <input class="wordle-letter row-4" type="text" maxlength="1" id="2" readonly>
+            <input class="wordle-letter row-4" type="text" maxlength="1" id="3" readonly>
+            <input class="wordle-letter row-4" type="text" maxlength="1" id="4" readonly>
+            <input class="wordle-letter row-4" type="text" maxlength="1" id="5" readonly>
+            <input class="wordle-letter row-5" type="text" maxlength="1" id="1" readonly>
+            <input class="wordle-letter row-5" type="text" maxlength="1" id="2" readonly>
+            <input class="wordle-letter row-5" type="text" maxlength="1" id="3" readonly>
+            <input class="wordle-letter row-5" type="text" maxlength="1" id="4" readonly>
+            <input class="wordle-letter row-5" type="text" maxlength="1" id="5" readonly>
+            <input class="wordle-letter row-6" type="text" maxlength="1" id="1" readonly>
+            <input class="wordle-letter row-6" type="text" maxlength="1" id="2" readonly>
+            <input class="wordle-letter row-6" type="text" maxlength="1" id="3" readonly>
+            <input class="wordle-letter row-6" type="text" maxlength="1" id="4" readonly>
+            <input class="wordle-letter row-6" type="text" maxlength="1" id="5" readonly>
         </div>
-    </form>
-    <div class="grid-elemet chart">
-        <canvas id="weightChart"></canvas>
-        <script src="{{ url_for('static', filename='js/weightChart.js')}}"></script>
     </div>
-    <form class="grid-elemet" action="{{ url_for('lift_register') }}" method="post">
-        <div class='form'>
-            {{ lift.date.label }}
-            {{ lift.date }}
-            {{ lift.exercise.label }}
-            {{ lift.exercise }}
-            {{ lift.weight.label }}
-            {{ lift.weight }}
-            {{ lift.user.label }}
-            {{ lift.user }}
-            {{ lift.submit }}
-        </div>
-    </form>
-    <div class="grid-elemet chart">
-        <canvas id="liftChart"></canvas>
-        <script src="{{ url_for('static', filename='js/liftChart.js')}}"></script>
-    </div>
+    <input type="submit" id="submit" value="Gita" onclick="gita()">
+    <script src="{{ url_for('static', filename='js/test.js') }}"></script>
 </div>
+
 {% endblock %}

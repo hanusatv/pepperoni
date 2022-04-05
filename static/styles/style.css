@@ -1,3 +1,8 @@
+.center{
+  text-align: center;
+  display: block;
+}
+
 .navigation-bar{
   background-color: #f0e40e;
   position: relative;
@@ -57,7 +62,7 @@ a{
   margin-left: 10px;
 }
 
-.form input[type=submit] {
+input[type=submit] {
   width: 100%;
   max-width: 400px;
   height: 40px;
@@ -89,4 +94,41 @@ input[type=submit]:hover {
 
 grid-elemet chart (2n) {
   border: 2px dashed red;
+}
+
+.wordle-grid-container{
+  display: grid;
+  margin-top: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  grid-template-columns: repeat(5, 50px);
+  column-gap: 20px;
+  row-gap: 20px;
+  justify-items: center;
+}
+
+.wordle-letter{
+  height: 50px;
+  width: 50px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  font-size: xxx-large;
+  text-transform: uppercase;
+}
+
+.active-row{
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.green-letter{
+  background: lightgreen;
+}
+
+.yellow-letter{
+  background: yellow;
+}
+
+.gray-letter{
+  background: lightgray;
 }

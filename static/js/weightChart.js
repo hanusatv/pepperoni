@@ -25,10 +25,7 @@ const weight_graphOptions = {
     }
   },
   plugins: {
-    colorschemes: {
-      scheme: 'brewer.RdYlGn6'
 
-    }
   }
 }
 const graphStyling = {

@@ -1,5 +1,6 @@
 import weightfunctions as wf
 import liftfunctions as lf
+import wordlefunctions as wdf
 import csv
 from datetime import date
 from wtforms.fields.choices import SelectField
@@ -133,9 +134,26 @@ def lift_get():
 
 @app.route('/test', methods=['GET'])
 def test():
-    weight_form = WeightForm()
-    lift_form = LiftForm()
-    return render_template('test.html', weight=weight_form, lift=lift_form)
+    return render_template('test.html')
+
+
+@app.route('/wordle/guess')
+def evaluate_guess():
+    respones = wdf.colorCodeLettersInGuess('hanus', 'stiga')
+    return jsonify(respones)
+
+
+@app.route('/wordle/getanswer', methods=['GET'])
+def get_wordle_answer():
+    answer = wdf.setAnswer()
+    return jsonify(answer)
+
+
+@app.route('/wordle/submitguess', methods=['POST'])
+def submit_guess():
+    submitted_guess = request.json
+    colored_guess = wdf.colorCodeLettersInGuess('magnus', submitted_guess)
+    return jsonify(colored_guess)
 ##
 # Functions
 ##
