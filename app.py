@@ -1,3 +1,4 @@
+import uuid
 import weightfunctions as wf
 import liftfunctions as lf
 import wordlefunctions as wdf
@@ -7,7 +8,7 @@ from wtforms.fields.choices import SelectField
 from wtforms.fields.simple import SubmitField
 from wtforms.validators import InputRequired, NumberRange
 from wtforms import DateField, DecimalField, IntegerField
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request, redirect, url_for, jsonify, make_response
 from flask_wtf import FlaskForm
 from waitress import serve
 
@@ -87,7 +88,9 @@ class LiftForm(FlaskForm):
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('index.html')
+    res = make_response(render_template('index.html'))
+    res.set_cookie('qid',str(uuid.uuid4()))
+    return res
 
 
 @app.route('/weight', methods=['GET'])
