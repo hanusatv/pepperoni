@@ -2,22 +2,20 @@ import json
 import re
 import random
 import os
+import uuid
 
 DB_DIR = "static/database"
+DATA_DIR = "data"
 
 # Ger ein lista við øllum valid guesses
 with open(os.path.join(DB_DIR, "validguesses.json"), "r", encoding="utf-8") as file:
-    #file = open("static/database/validGuesses.json", encoding="utf-8")
     validGuesses = json.load(file)
-    # file.close()
     a = (map(lambda x: x.lower(), validGuesses))
     validGuesses = list(a)
 
 # Ger ein lista við øllum valid wordl
 with open(os.path.join(DB_DIR, "wordlist.json"), "r", encoding="utf-8") as file:
-    #file = open("static/database/wordlist.json", encoding="utf-8")
     wordlist = json.load(file)
-    # file.close()
     a = (map(lambda x: x.lower(), wordlist))
     wordlist = list(a)
 
@@ -148,3 +146,30 @@ def setAnswer():
     a = (map(lambda x: x.lower(), wordlist))
     wordlist = list(a)
     return random.choice(wordlist)
+
+
+def validateWord(guess):
+    if guess in validGuesses:
+        return True
+    else:
+        return False
+
+
+def saveCookieWordle(cookie):
+    if cookie == None:
+        return
+    else:
+        with open(os.path.join(DATA_DIR, "cookiedata.json"), "r", encoding="utf-8") as file:
+            cookieData = json.load(file)
+            newKey = {cookie: setAnswer()}
+            cookieData.update(newKey)
+        with open(os.path.join(DATA_DIR, "cookiedata.json"), "w", encoding="utf-8") as file:
+            json.dump(cookieData, file)
+
+
+def readCookieWordle(cookie):
+    with open(os.path.join(DATA_DIR, "cookiedata.json"), "r", encoding="utf-8") as file:
+        cookieData = json.load(file)
+        res = cookieData[cookie]
+        print(res)
+        return res

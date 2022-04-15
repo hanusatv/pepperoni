@@ -8,7 +8,7 @@ from wtforms.fields.choices import SelectField
 from wtforms.fields.simple import SubmitField
 from wtforms.validators import InputRequired, NumberRange
 from wtforms import DateField, DecimalField, IntegerField
-from flask import Flask, render_template, request, redirect, url_for, jsonify, make_response
+from flask import Flask, render_template, request, Response, redirect, url_for, jsonify, make_response
 from flask_wtf import FlaskForm
 from waitress import serve
 
@@ -89,8 +89,20 @@ class LiftForm(FlaskForm):
 @app.route('/', methods=['GET'])
 def index():
     res = make_response(render_template('index.html'))
-    res.set_cookie('qid',str(uuid.uuid4()))
     return res
+
+
+@app.route('/cookie',  methods=['GET'])
+def cookie_management():
+    cookies = request.cookies
+    qid = cookies.get("qid")
+    if qid == None:
+        res = make_response('cookie set')
+        res.set_cookie('qid', str(uuid.uuid4()))
+        return res
+    else:
+        res = make_response('cookie already set')
+        return res
 
 
 @app.route('/weight', methods=['GET'])
@@ -140,17 +152,26 @@ def test():
     return render_template('test.html')
 
 
-@app.route('/wordle/getanswer', methods=['GET'])
-def get_wordle_answer():
-    answer = wdf.setAnswer()
-    return jsonify(answer)
+@app.route('/wordle/setanswer', methods=['GET'])
+def save_wordle_answer():
+    qid = request.cookies.get("qid")
+    wdf.saveCookieWordle(qid)
+    res = make_response('Answer set')
+    return res
 
 
 @app.route('/wordle/submitguess', methods=['POST'])
 def submit_guess():
-    submitted_guess = request.json
-    colored_guess = wdf.colorCodeLettersInGuess('hanus', submitted_guess)
-    return jsonify(colored_guess)
+    submittedGuess = request.json
+    qid = request.cookies.get("qid")
+    correctAnswer = wdf.readCookieWordle(qid)
+    if wdf.validateWord(submittedGuess):
+        colored_guess = wdf.colorCodeLettersInGuess(
+            correctAnswer, submittedGuess)
+        return jsonify(colored_guess)
+    else:
+        return jsonify(False)
+
 ##
 # Functions
 ##
