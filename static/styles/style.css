@@ -9,6 +9,7 @@
   display: flex;
   font-size: 35px;
   box-shadow: 2px 2px 4px 4px #c4ce3d;
+  width: 100%;
 }
 
 .navigation-element {
@@ -107,6 +108,7 @@ grid-elemet chart (2n) {
   column-gap: 20px;
   row-gap: 20px;
   justify-items: center;
+  justify-content: center;
 }
 
 .wordle-letter {
@@ -121,6 +123,11 @@ grid-elemet chart (2n) {
 
 .active-row {
   border: 1px solid rgb(0, 0, 0);
+}
+
+.center-button {
+  display: flex;
+  justify-content: center;
 }
 
 .green-letter {

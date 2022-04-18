@@ -152,6 +152,11 @@ def test():
     return render_template('test.html')
 
 
+@app.route('/wordle', methods=['GET'])
+def wordle_form():
+    return render_template('wordle.html')
+
+
 @app.route('/wordle/setanswer', methods=['GET'])
 def save_wordle_answer():
     qid = request.cookies.get("qid")

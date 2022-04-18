@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="wordle-frame">
+    <div class="form">
+        <div class="wordle-grid-container">
+            <input class="wordle-letter row-1" type="text" maxlength="1" id="1" readonly>
+            <input class="wordle-letter row-1" type="text" maxlength="1" id="2" readonly>
+            <input class="wordle-letter row-1" type="text" maxlength="1" id="3" readonly>
+            <input class="wordle-letter row-1" type="text" maxlength="1" id="4" readonly>
+            <input class="wordle-letter row-1" type="text" maxlength="1" id="5" readonly>
+            <input class="wordle-letter row-2" type="text" maxlength="1" id="1" readonly>
+            <input class="wordle-letter row-2" type="text" maxlength="1" id="2" readonly>
+            <input class="wordle-letter row-2" type="text" maxlength="1" id="3" readonly>
+            <input class="wordle-letter row-2" type="text" maxlength="1" id="4" readonly>
+            <input class="wordle-letter row-2" type="text" maxlength="1" id="5" readonly>
+            <input class="wordle-letter row-3" type="text" maxlength="1" id="1" readonly>
+            <input class="wordle-letter row-3" type="text" maxlength="1" id="2" readonly>
+            <input class="wordle-letter row-3" type="text" maxlength="1" id="3" readonly>
+            <input class="wordle-letter row-3" type="text" maxlength="1" id="4" readonly>
+            <input class="wordle-letter row-3" type="text" maxlength="1" id="5" readonly>
+            <input class="wordle-letter row-4" type="text" maxlength="1" id="1" readonly>
+            <input class="wordle-letter row-4" type="text" maxlength="1" id="2" readonly>
+            <input class="wordle-letter row-4" type="text" maxlength="1" id="3" readonly>
+            <input class="wordle-letter row-4" type="text" maxlength="1" id="4" readonly>
+            <input class="wordle-letter row-4" type="text" maxlength="1" id="5" readonly>
+            <input class="wordle-letter row-5" type="text" maxlength="1" id="1" readonly>
+            <input class="wordle-letter row-5" type="text" maxlength="1" id="2" readonly>
+            <input class="wordle-letter row-5" type="text" maxlength="1" id="3" readonly>
+            <input class="wordle-letter row-5" type="text" maxlength="1" id="4" readonly>
+            <input class="wordle-letter row-5" type="text" maxlength="1" id="5" readonly>
+            <input class="wordle-letter row-6" type="text" maxlength="1" id="1" readonly>
+            <input class="wordle-letter row-6" type="text" maxlength="1" id="2" readonly>
+            <input class="wordle-letter row-6" type="text" maxlength="1" id="3" readonly>
+            <input class="wordle-letter row-6" type="text" maxlength="1" id="4" readonly>
+            <input class="wordle-letter row-6" type="text" maxlength="1" id="5" readonly>
+        </div>
+    </div>
+    <div class="center-button">
+        <input type="submit" id="submit" value="Gita" onclick="gita()">
+    </div>
+    <script src="{{ url_for('static', filename='js/wordle.js') }}"></script>
+</div>
+
+<dialog id="notifier">
+    <p id="notification-message">Notification message</p>
+    <form method="dialog"></form>
+</dialog>
+
+{% endblock %}
