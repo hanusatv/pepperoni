@@ -160,6 +160,13 @@ def save_wordle_answer():
     return res
 
 
+@app.route('/wordle/getanswer', methods=['GET'])
+def deliver_answer():
+    qid = request.cookies.get("qid")
+    answer = wdf.readCookieWordle(qid)
+    return answer
+
+
 @app.route('/wordle/submitguess', methods=['POST'])
 def submit_guess():
     submittedGuess = request.json
@@ -171,6 +178,7 @@ def submit_guess():
         return jsonify(colored_guess)
     else:
         return jsonify(False)
+
 
 ##
 # Functions

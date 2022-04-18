@@ -2,7 +2,7 @@ const get_answer_url = '/wordle/getanswer'
 const submit_guess = '/wordle/submitguess'
 const set_wordle_answer = '/wordle/setanswer'
 const allowed_letters = ['a', 'á', 'b', 'd', 'ð', 'e', 'f', 'g', 'h', 'i', 'í', 'j', 'k', 'l', 'm', 'n', 'o', 'ó', 'p', 'r', 's', 't', 'u', 'ú', 'v', 'y', 'ý', 'æ', 'ø']
-const notifications = ['Wuhu!! Tú vann!! UwU <3', 'Orðið finst ikki', "Øvv bubbu :'( orðið var:"]
+const notifications = ['Wuhu!! Tú vann!! UwU <3', 'Orðið finst ikki', "Øvv bubbu :'( orðið var: "]
 
 
 var tryNo = 1
@@ -12,6 +12,15 @@ async function setWordleAnswer() {
 }
 
 setWordleAnswer()
+
+async function getWordleAnswer() {
+  data = await fetch(get_answer_url)
+  res = await data.text()
+  return res
+}
+
+
+//setWordleAnswer()
 
 // Fanga svarið sum er skriva inn
 function collectGuess() {
@@ -115,7 +124,7 @@ function notificationHandler(message) {
   notifier.setAttribute("open", "")
   setTimeout(function () {
     notifier.removeAttribute("open", "")
-  }, 2000)
+  }, 3000)
 }
 
 async function gita() {
@@ -142,12 +151,18 @@ async function gita() {
     correctGuess()
     return
   }
+  if (tryNo == 7) {
+    correctWord = await getWordleAnswer()
+    notifications[2] += correctWord
+    notificationHandler(2)
+  }
   setActiveLetters()
 }
 
 
 
 //Flyt focus frá einum input til næsta
+//
 var container = document.getElementsByClassName("wordle-grid-container")[0]
 //var container = document.querySelectorAll(".active-row")
 //console.log(container)

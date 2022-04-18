@@ -1,9 +1,9 @@
-.center{
+.center {
   text-align: center;
   display: block;
 }
 
-.navigation-bar{
+.navigation-bar {
   background-color: #f0e40e;
   position: relative;
   display: flex;
@@ -11,42 +11,44 @@
   box-shadow: 2px 2px 4px 4px #c4ce3d;
 }
 
-.navigation-element{
+.navigation-element {
   display: flex;
   align-items: center;
   padding: 0px;
   margin: 0px;
 }
 
-.logo{
+.logo {
   height: 100px;
   padding: 0px;
 }
 
-.navigation-bar li{  
+.navigation-bar li {
   display: inherit;
   margin-left: 20px;
   margin-right: 20px;
 }
 
-body{
+body {
   margin: 0px;
   font-family: Helvetica, sans-serif;
   color: black;
   background-color: #fffcdb;
 }
 
-a{
+a {
   text-decoration: none;
   color: black;
 }
 
-.form{
+.form {
   display: block;
   width: 100%;
 }
 
-.form [type=date],.form [type=number],.form select {
+.form [type=date],
+.form [type=number],
+.form select {
   width: 100%;
   max-width: 400px;
   height: 40px;
@@ -58,7 +60,7 @@ a{
   box-sizing: border-box;
 }
 
-.form label{
+.form label {
   margin-left: 10px;
 }
 
@@ -82,7 +84,7 @@ input[type=submit]:hover {
   width: 80%;
 }
 
-.grid-container{
+.grid-container {
   display: grid;
   margin-top: 20px;
   margin-left: 50px;
@@ -96,7 +98,7 @@ grid-elemet chart (2n) {
   border: 2px dashed red;
 }
 
-.wordle-grid-container{
+.wordle-grid-container {
   display: grid;
   margin-top: 20px;
   margin-left: 50px;
@@ -107,7 +109,7 @@ grid-elemet chart (2n) {
   justify-items: center;
 }
 
-.wordle-letter{
+.wordle-letter {
   height: 50px;
   width: 50px;
   border: 1px solid #ccc;
@@ -117,18 +119,27 @@ grid-elemet chart (2n) {
   text-transform: uppercase;
 }
 
-.active-row{
+.active-row {
   border: 1px solid rgb(0, 0, 0);
 }
 
-.green-letter{
+.green-letter {
   background: lightgreen;
 }
 
-.yellow-letter{
+.yellow-letter {
   background: yellow;
 }
 
-.gray-letter{
+.gray-letter {
   background: lightgray;
+}
+
+dialog {
+  border-radius: 10px;
+  font-weight: bold;
+  background-color: ivory;
+  border-width: thin;
+  border-color: darkgrey;
+  top: 305px
 }
