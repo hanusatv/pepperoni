@@ -16,7 +16,7 @@ setWordleAnswer()
 async function getWordleAnswer() {
     data = await fetch(get_answer_url)
     res = await data.text()
-    return res
+    return res.toUpperCase()
 }
 
 
