@@ -16,7 +16,7 @@ setWordleAnswer()
 async function getWordleAnswer() {
     data = await fetch(get_answer_url)
     res = await data.text()
-    return res.toUpperCase()
+    return res
 }
 
 
@@ -164,12 +164,10 @@ async function gita() {
 //Flyt focus frá einum input til næsta
 //
 var container = document.getElementsByClassName("wordle-grid-container")[0]
-//var container = document.querySelectorAll(".active-row")
-//console.log(container)
-container.onkeyup = function (e) {
-    let target = e.target;
-    console.log(target.value)
-    if (allowed_letters.includes(target.value)) {
+container.addEventListener('keyup', (e) => {
+    let key = e.key
+    let target = e.target
+    if (allowed_letters.includes(key)) {
         let maxLength = parseInt(target.attributes["maxlength"].value, 10);
         let myLength = target.value.length;
         if (myLength >= maxLength) {
@@ -184,10 +182,8 @@ container.onkeyup = function (e) {
             }
         }
     }
-    else {
-        target.value = ''
-    }
-}
+})
+
 //fanga 'Enter' key
 document.addEventListener('keydown', (e) => {
     if (e.key == 'Enter') {
